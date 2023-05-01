@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.ecommer.spring.EccomerSpringBootApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.388 s - in com.ecommer.spring.EccomerSpringBootApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.818 s - in com.ecommer.spring.EccomerSpringBootApplicationTests
