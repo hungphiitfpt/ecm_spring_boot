@@ -3,6 +3,6 @@
       "type": "maven"
     },
     "deploy": {
-      "goal": "CC_MAVEN_PROFILES=prod"
+      "goal": "spring-boot:run"
     }
   }
