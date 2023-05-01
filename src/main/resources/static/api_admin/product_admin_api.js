@@ -112,6 +112,12 @@ async function selectFilterTableProduct(page__v,size__v,key__v) {
     var res = await axiosTemplate(method, url, params, data,'#table-list-product-manager');
     
     drawTableProductManager(res, $('#table-list-product-manager'))
+
+    if(res.data.content.length == 0) {
+      toastMessage("Có lỗi xảy ra","Không tìm thấy sản phẩm phù hợp","error",5000)
+    }else {
+      toastMessage("Thành công","Sản phẩm vừa được làm mới","success",5000)
+    }
 	
 }
 

@@ -79,14 +79,16 @@ public class productRestController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
         
+        try {
+        	Page<Product> products = productRepository.searchProducts(keyword, price, categoryId, colorId, PageRequest.of(page, size));
+    		return products;
+		} catch (Exception e) {
+			// Xử lý ngoại lệ ở đây, ví dụ như ghi log, thông báo lỗi, trả về mã lỗi tương ứng, vv.
+	        e.printStackTrace(); // In thông tin lỗi ra console để debug
+	        throw new RuntimeException("Lỗi xảy ra khi tìm kiếm sản phẩm", e);
+	    }
+}
         
-        Page<Product> products = productRepository.searchProducts(keyword, price, categoryId, colorId, PageRequest.of(page, size));
-        
-        if (products.isEmpty()) {
-            return null;
-        }
-		return products;
-    }
 	
 	@GetMapping("export-excel")
 	public void exportExcel(HttpServletResponse response,

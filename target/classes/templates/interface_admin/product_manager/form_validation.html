@@ -22,14 +22,15 @@
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="../../admin-static/css/daterangepicker.css">
     <!-- App CSS -->
-    <link rel="stylesheet" href="../../admin-static/css/app-light.css" id="lightTheme" disabled>
-    <link rel="stylesheet" href="../../admin-static/css/app-dark.css" id="darkTheme">
+    <link rel="stylesheet" href="../../admin-static/css/app-light.css" id="lightTheme" >
+    <link rel="stylesheet" href="../../admin-static/css/app-dark.css" id="darkTheme" disabled>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
     <script src="../../variable_template/variable_index.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
-  <body class="vertical  dark">
+  <body class="vertical light">
+    <div id="toast"></div>
     <div class="wrapper">
       <nav class="topnav navbar navbar-light">
         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
@@ -535,6 +536,7 @@
                         </div>
                       </div>
                       <!-- table -->
+                      <div id="toast"></div>
                       <table class="table table-hover table-borderless border-v">
                         <thead class="thead-dark">
                           <tr>
