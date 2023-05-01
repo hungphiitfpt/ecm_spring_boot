@@ -9,10 +9,10 @@ com/ecommer/spring/services/ProductService.class
 com/ecommer/spring/model/Image.class
 com/ecommer/spring/model/ImageRequest.class
 com/ecommer/spring/model/ProductRequest.class
-com/ecommer/spring/services/ImageStorageService.class
 com/ecommer/spring/model/Category.class
 com/ecommer/spring/repository/imageRepository.class
 com/ecommer/spring/model/ProductExcelExporter.class
+com/ecommer/spring/servicesImplement/imageServiceImpl.class
 com/ecommer/spring/controller/colorRestController.class
 com/ecommer/spring/services/IStorageService.class
 com/ecommer/spring/servicesImplement/ProductServiceImplement.class

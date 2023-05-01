@@ -5,10 +5,11 @@
 package com.ecommer.spring.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import com.ecommer.spring.model.Category;
 import com.ecommer.spring.model.Color;
 
+@Repository
 public interface colorRepository  extends JpaRepository<Color, Long>{
 
 	

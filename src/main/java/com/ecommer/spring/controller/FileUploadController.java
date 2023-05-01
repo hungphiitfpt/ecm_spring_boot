@@ -19,7 +19,6 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBuilder;
 
 import com.ecommer.spring.model.Image;
-import com.ecommer.spring.model.ImageRequest;
 import com.ecommer.spring.model.Product;
 import com.ecommer.spring.model.ResponseObject;
 import com.ecommer.spring.repository.imageRepository;

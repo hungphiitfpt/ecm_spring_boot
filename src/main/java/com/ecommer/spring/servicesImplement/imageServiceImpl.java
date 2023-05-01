@@ -1,11 +1,4 @@
-package com.ecommer.spring.services;
-
-import org.apache.commons.io.FilenameUtils;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
-import org.springframework.stereotype.Service;
-import org.springframework.util.StreamUtils;
-import org.springframework.web.multipart.MultipartFile;
+package com.ecommer.spring.servicesImplement;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,11 +10,22 @@ import java.util.Arrays;
 import java.util.UUID;
 import java.util.stream.Stream;
 
-@Service
-public class ImageStorageService implements IStorageService{
+import org.apache.commons.io.FilenameUtils;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+import org.springframework.util.StreamUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.ecommer.spring.services.IStorageService;
+
+@Repository
+public class imageServiceImpl implements IStorageService{
+
     private final Path storageFolder = Paths.get("uploads");
     //constructor
-    public ImageStorageService() {
+    public imageServiceImpl() {
         try {
             Files.createDirectories(storageFolder);
         }catch (IOException exception) {
@@ -109,4 +113,5 @@ public class ImageStorageService implements IStorageService{
     public void deleteAllFiles() {
 
     }
+
 }

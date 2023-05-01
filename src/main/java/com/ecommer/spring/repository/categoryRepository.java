@@ -5,9 +5,11 @@
 package com.ecommer.spring.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.ecommer.spring.model.Category;
 
+@Repository
 public interface categoryRepository  extends JpaRepository<Category, Long>{
 
 	

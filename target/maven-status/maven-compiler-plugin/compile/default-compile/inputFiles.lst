@@ -14,9 +14,9 @@
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/EccomerSpringBootApplication.java
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/model/ImageRequest.java
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/repository/imageRepository.java
+/Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/servicesImplement/imageServiceImpl.java
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/controller/FileUploadController.java
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/model/Image.java
-/Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/services/ImageStorageService.java
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/model/Color.java
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/repository/categoryRepository.java
 /Users/nguyenphamhungphi/Documents/workspace-spring-tool-suite-4-4.15.1.RELEASE/CLOUD_SERVER/ecm_spring_boot/src/main/java/com/ecommer/spring/model/ResponseObject.java

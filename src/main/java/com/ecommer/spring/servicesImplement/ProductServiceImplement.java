@@ -10,6 +10,7 @@ import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import com.ecommer.spring.model.Category;
 import com.ecommer.spring.model.Color;
@@ -23,7 +24,7 @@ import com.ecommer.spring.services.ProductService;
 @Repository
 public class ProductServiceImplement implements ProductService{
 
-	@Autowired 
+	@Autowired
 	productRepository productRepository;
 	
 	@Autowired
