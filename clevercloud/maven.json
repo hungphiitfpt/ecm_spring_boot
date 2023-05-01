@@ -1,5 +1,5 @@
 {
     "deploy": {
-      "goal": "Eccomer-Spring-Boot-0.1.jar"
+      "goal": "spring-boot:run"
     }
   }
