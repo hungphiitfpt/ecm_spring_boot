@@ -1,5 +1,5 @@
-var host = `http://localhost:8888/`;
-var api_images = `http://localhost:8888/api/v1/FileUpload/files/`;
+var host = `http://localhost:8080/`;
+var api_images = `http://localhost:8080/api/v1/FileUpload/files/`;
 /*
 var api_graduation = `http://localhost:8080/api/graduation/`;
 var api_admin = `http://localhost:8080/api/admin/`;
