@@ -1,0 +1,8 @@
+{
+    "build": {
+      "type": "maven"
+    },
+    "deploy": {
+      "goal": "CC_MAVEN_PROFILES=prod"
+    }
+  }
