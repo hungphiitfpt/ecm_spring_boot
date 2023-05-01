@@ -896,7 +896,6 @@
   background-color: var(--white-color);
   border-radius: 10px;
   box-shadow: rgb(21, 68, 183) 0px 8px 24px;
-  width: 340px;
   min-height: 360px;
   display: flex;
   align-items: center;

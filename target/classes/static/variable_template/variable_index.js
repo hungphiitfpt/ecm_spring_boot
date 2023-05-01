@@ -1,6 +1,5 @@
 var host = `https://ecm-springboot-phinph.cleverapps.io/`;
 var api_images = `https://ecm-springboot-phinph.cleverapps.io/api/v1/FileUpload/files/`;
-//a
 /*
 var api_graduation = `http://localhost:8080/api/graduation/`;
 var api_admin = `http://localhost:8080/api/admin/`;
