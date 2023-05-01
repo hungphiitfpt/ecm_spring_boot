@@ -70,6 +70,18 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>com.clever-cloud</groupId>
+				<artifactId>clever-cloud-maven-plugin</artifactId>
+				<version>2.35</version>
+				<configuration>
+					<api-key>${env.CLEVER_CLOUD_API_TOKEN}</api-key>
+					<secret-key>${env.CLEVER_CLOUD_API_SECRET}</secret-key>
+					<deploy-directory>target</deploy-directory>
+					<build-type>maven</build-type>
+					<start-command>java -jar ${project.build.finalName}.jar</start-command>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
