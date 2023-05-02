@@ -97,7 +97,6 @@ async function loadAllProduct() {
 
 async function selectFilterTableProduct(page__v,size__v,key__v) {
   // Xử lý logic khi người dùng click vào đường link
-  console.log("Đã click vào trang " + page__v);
   let page__c = page__v;
   size__v = $('.select-filter-table').val();
   key__v = $('.keyword-filter-table').val();
@@ -115,7 +114,10 @@ async function selectFilterTableProduct(page__v,size__v,key__v) {
 
     if(res.data.content.length == 0) {
       toastMessage("Có lỗi xảy ra","Không tìm thấy sản phẩm phù hợp","error",5000)
-    }else {
+    } else if(res.status != 200){
+      toastMessage("Cảnh báo","Cảnh báo cho bạn","warning",5000)
+    } 
+    else {
       toastMessage("Thành công","Sản phẩm vừa được làm mới","success",5000)
     }
 	
@@ -215,23 +217,21 @@ async function drawTableProductManager(res) {
       </td>
       </tr>`;
 	}
-  for (let i = 1; i < res.data.totalPages; i++) {
+  for (let i = 1; i < res.data.totalPages - 1; i++) {
     page__c += `
-    <li class="page-item"><a class="page-link page-link${i}" href="#" onclick="selectFilterTableProduct(${i})">${i}</a></li>
+    <li class="page-item"><a class="page-link page-link${i}" href="#" onclick="selectFilterTableProduct(${i})" data-page="${res.data.number}">${i}</a></li>
     `
   }
-  page_last = `<a class="page-link" href="#" onclick="selectFilterTableProduct(${res.data.totalPages - 1})">Next</a>`;
+  page_last = `<a class="page-link" href="#" onclick="selectFilterTableProduct(${res.data.totalPages - 1})" data-page="${res.data.totalPages - 1}">Next</a>`;
   $('.page_last__c').html(page_last);
 	$('#table-list-product-manager').html(ProductHTML);
   $('.page_table__c').html(page__c);
   $('.page-item .page-link').removeClass('li-disable');
-  console.log(res.data.number);
   if(res.data.number + 1 == res.data.totalPages){
     $('.page_last__c .page-link').addClass('li-disable');
   } else if (res.data.number == 0) {
     $('.page_first__c .page-link').addClass('li-disable');
-  } else {
-    console.log($('.page_table__c .page_item .page-link'));
-    //abc
+  }else {
+    $(`.page-item .page-link${res.data.number}`).addClass('li-disable');
   }
 }

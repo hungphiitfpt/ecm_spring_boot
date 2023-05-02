@@ -64,7 +64,7 @@ public class productRestController {
 	}
 
 	@RequestMapping(value = "add", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE })
-  public ResponseEntity<Product> createProduct(@RequestBody ProductRequest products) {
+	public ResponseEntity<Product> createProduct(@RequestBody ProductRequest products) {
     Product product = productService.createProduct(products);
     return ResponseEntity.ok().body(product);
   }
@@ -151,7 +151,6 @@ public class productRestController {
 	    // thiết lập response header và ghi file Excel vào response stream
 	    response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 	    response.setHeader("Content-Disposition", "attachment; filename=\"products.xlsx\"");
-
 	    ServletOutputStream outputStream = response.getOutputStream();
 	    workbook.write(outputStream);
 	    workbook.close();

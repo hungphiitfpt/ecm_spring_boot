@@ -8,7 +8,7 @@ public class HomeController {
 
 	@RequestMapping("/index")
 	public String index() {
-		return "interface_shop/essence-master/shop";
+		return "interface_shop/shop_index/index";
 	}
 	@RequestMapping("/admin/index")
 	public String adminIndex() {

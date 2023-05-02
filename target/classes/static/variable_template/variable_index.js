@@ -56,6 +56,25 @@ function toast({ title = "", message = "", type = "info", duration = 3000 }) {
 	  duration: time__c
 	});
   }
+
+  async function exportFile(page__v,size__v,key__v){
+	page__v = $('.li-disable').data('page');
+	size__v = $('.select-filter-table').val();
+	key__v = $('.keyword-filter-table').val();
+
+	console.log("page__v" ,page__v,"size__v" , size__v, "key__v",key__v);
+
+	let method = 'get',
+
+	url = `${host}api/products/export-excel`,
+
+	params = { page: page__v ,size: size__v,keyword:key__v},
+
+	data = {};
+
+	var res = await axiosTemplate(method, url, params, data);
+	window.location.assign(`${res.request.responseURL}`);
+  }
   
 /*
 var api_graduation = `http://localhost:8080/api/graduation/`;
