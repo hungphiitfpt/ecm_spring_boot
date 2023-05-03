@@ -122,12 +122,12 @@
                     <div class="popular-products-slides owl-carousel">
 
                         <!-- Single Product -->
-                        <div class="single-product-wrapper" th:each="product : ${products}">
+                        <div class="single-product-wrapper" th:each="product,row : ${products}">
                             <!-- Product Image -->
                             <div class="product-img">
-                                <img class="height_image_210" th:if="${not #lists.isEmpty(product.images)}" th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${product.images[1].url}" alt="">
+                                <img class="height_image_210" th:if="${not #lists.isEmpty(product.images)}" th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${product.images[0].url}" alt="">
                                 <!-- Hover Thumb -->
-                                <img class="hover-img height_image_210" th:if="${not #lists.isEmpty(product.images)}" th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${product.images[0].url}" alt="">
+                                <img class="hover-img height_image_210" th:if="${not #lists.isEmpty(product.images)}" th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${row.current.images[0].url}" alt="">
                                 <!-- Favourite -->
                                 <div class="product-favourite">
                                     <a href="#" class="favme fa fa-heart"></a>

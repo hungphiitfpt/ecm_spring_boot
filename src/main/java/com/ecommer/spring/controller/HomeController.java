@@ -38,8 +38,8 @@ public class HomeController {
 	public String adminProductVadition() {
 		return "interface_admin/product_manager/form_validation";
 	}
-	@RequestMapping("/shop/product/{id}")
-	public String getDetailProduct(@PathVariable long id, Model model) {
+		@RequestMapping("/shop/product/{id}")
+		public String getDetailProduct(@PathVariable long id, Model model) {
 		Product product = productService.findByIdProduct(id);
 		model.addAttribute("products", product.getImages());
 		return "interface_shop/shop_index/single_product_detail";
