@@ -160,7 +160,7 @@ section .card .image img{
   position: absolute;
   top: 100%;
   left: 0;
-  min-height: 100px;
+  min-height: 500px;
   height: 100%;
   width: 100%;
   background-color: #fff;
@@ -180,4 +180,12 @@ section .card .image img{
 
 .search-results a:hover {
   background-color: #f4f4f4;
+}
+.width_image_210{
+  width: 210px !important;
+  object-fit: contain;
+}
+.height_image_210{
+  height: 210px !important;
+  object-fit: contain;
 }

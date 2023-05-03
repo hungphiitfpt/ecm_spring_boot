@@ -121,17 +121,39 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <section>
-                        <div class="swiper mySwiper container">
-                          <div class="swiper-wrapper content list-product-shop">
-                    
-                            
-                    
-                          </div>
+                    <div class="popular-products-slides owl-carousel">
+
+                        <!-- Single Product -->
+                        <div class="single-product-wrapper" th:each="product : ${products}">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img class="height_image_210" th:if="${not #lists.isEmpty(product.images)}" th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${product.images[1].url}" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img height_image_210" th:if="${not #lists.isEmpty(product.images)}" th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${product.images[0].url}" alt="">
+                                <!-- Favourite -->
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                <span th:text="${product.category.name}">topshop</span>
+                                <a href="single-product-details.html">
+                                    <h6 class="css_text_long" th:text="${product.name}">Knot Front Mini Dress</h6>
+                                </a>
+                                <p th:text="${product.price}" class="product-price">$80.00</p>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <a href="#" class="btn essence-btn">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="swiper-button-next"></div>
-                          <div class="swiper-button-prev"></div>
-                      </section>
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -285,9 +307,14 @@
         $('#headerSearch').click(function(){
             $('.search-results').removeClass("d-none");
         })
-        $('#headerSearch').blur(function(){
-            $('.search-results').addClass("d-none");
+        $('#headerSearch').keydown(function(){
+            $('.search-results').removeClass("d-none");
         })
+        const searchResults = document.querySelector('#result-search-header');
+        searchResults.addEventListener('mouseleave', function() {
+            // Khi người dùng rời khỏi phần tử searchResults, ẩn phần tử
+            searchResults.classList.add('d-none');
+          });
     </script>    
 </body>
 

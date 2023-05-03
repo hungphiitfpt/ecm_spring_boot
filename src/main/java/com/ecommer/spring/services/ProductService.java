@@ -4,6 +4,8 @@
 */
 package com.ecommer.spring.services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.ecommer.spring.model.Product;
@@ -15,6 +17,8 @@ public interface ProductService {
 	Product createProduct(ProductRequest products);
 
 	Product findByIdProduct(long id);
+
+	List<Product> findAll();
 
 }
  

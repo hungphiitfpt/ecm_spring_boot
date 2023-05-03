@@ -1,5 +1,7 @@
 package com.ecommer.spring.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +17,9 @@ public class HomeController {
 	@Autowired
 	ProductService productService;
 	@RequestMapping("/index")
-	public String index() {
+	public String index(Model model) {
+		List<Product> products = productService.findAll();
+		model.addAttribute("products", products);
 		return "interface_shop/shop_index/index";
 	}
 	@RequestMapping("/admin/index")
@@ -37,8 +41,7 @@ public class HomeController {
 	@RequestMapping("/shop/product/{id}")
 	public String getDetailProduct(@PathVariable long id, Model model) {
 		Product product = productService.findByIdProduct(id);
-		 model.addAttribute("product", product);
-		 System.out.println(product);
+		model.addAttribute("products", product.getImages());
 		return "interface_shop/shop_index/single_product_detail";
 	}
 	

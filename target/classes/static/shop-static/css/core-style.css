@@ -1753,3 +1753,10 @@ img {
 /* ##### The End ##### */
 
 /*# sourceMappingURL=core-style.css.map */
+
+.css_text_long{
+    white-space: nowrap;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

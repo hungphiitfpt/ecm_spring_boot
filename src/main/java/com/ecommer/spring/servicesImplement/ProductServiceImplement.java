@@ -6,7 +6,9 @@ package com.ecommer.spring.servicesImplement;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -59,6 +61,13 @@ public class ProductServiceImplement implements ProductService{
 	public Product findByIdProduct(long id) {
 		// TODO Auto-generated method stub
 		return productRepository.findByProduct(id);
+	}
+
+
+	@Override
+	public List<Product> findAll() {
+		// TODO Auto-generated method stub
+		return productRepository.findAll();
 	}
 
 

@@ -7,6 +7,7 @@ package com.ecommer.spring.controller;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -23,9 +24,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +38,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ecommer.spring.model.Product;
 import com.ecommer.spring.model.ProductRequest;
+import com.ecommer.spring.model.ResponseObject;
 import com.ecommer.spring.repository.productRepository;
 import com.ecommer.spring.services.ProductService;
 
@@ -88,6 +93,20 @@ public class productRestController {
 	        throw new RuntimeException("Lỗi xảy ra khi tìm kiếm sản phẩm", e);
 	    }
 }
+	@RequestMapping(value="detail/{id}",method = RequestMethod.GET, produces = {MediaType.APPLICATION_JSON_VALUE })
+	public ResponseEntity<ResponseObject> getDetailProduct(@PathVariable long id, Model model) {
+		try {
+			Product product = productService.findByIdProduct(id);
+			return product != null ? ResponseEntity.status(HttpStatus.OK)
+					.body(new ResponseObject("ok", "Đã tìm thấy sản phẩm", product)
+					)
+					: ResponseEntity.status(HttpStatus.NOT_FOUND)
+							.body(new ResponseObject("NOT FOUND", "Cannot find product with id = " + id, ""));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
         
 	
 	@GetMapping("export-excel")

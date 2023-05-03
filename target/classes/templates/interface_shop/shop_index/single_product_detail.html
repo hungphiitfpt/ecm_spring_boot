@@ -18,7 +18,8 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="../../shop-static/css/core-style.css">
     <link rel="stylesheet" href="../../shop-static/style.css">
-
+    <script src="../../variable_template/variable_index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -206,18 +207,21 @@
 
         <!-- Single Product Thumb -->
         <div class="single_product_thumb clearfix">
-            <div class="product_thumbnail_slides owl-carousel">
-                <img src="../../shop-static/img/product-img/product-big-1.jpg" alt="">
-                <img src="../../shop-static/img/product-img/product-big-2.jpg" alt="">
-                <img src="../../shop-static/img/product-img/product-big-3.jpg" alt="">
+            <!-- <div class="product_thumbnail_slides owl-carousel" th:each="product : ${products}">
+                <img th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${product.url}" alt="">
+            </div> -->
+
+            <div class="product_thumbnail_slides owl-carousel" >
+                <img th:each="product : ${products}" th:src="${#httpServletRequest.scheme}+'://'+${#httpServletRequest.serverName}+':'+${#httpServletRequest.serverPort}+'/api/v1/FileUpload/files/'+${product.url}" alt="">
             </div>
+            
         </div>
 
         <!-- Single Product Description -->
         <div class="single_product_desc clearfix">
-            <span>mango</span>
+            <span id="category-name-shop">mango</span>
             <a href="cart.html">
-                <h2>One Shoulder Glitter Midi Dress</h2>
+                <h2 id="name-product-shop">One Shoulder Glitter Midi Dress</h2>
             </a>
             <p class="product-price"><span class="old-price">$65.00</span> $49.00</p>
             <p class="product-desc">Mauris viverra cursus ante laoreet eleifend. Donec vel fringilla ante. Aenean finibus velit id urna vehicula, nec maximus est sollicitudin.</p>
@@ -333,17 +337,20 @@
     <!-- ##### Footer Area End ##### -->
 
     <!-- jQuery (Necessary for All JavaScript Plugins) -->
-    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <script src="../../shop-static/js/jquery/jquery-2.2.4.min.js"></script>
     <!-- Popper js -->
-    <script src="js/popper.min.js"></script>
+    <script src="../../shop-static/js/popper.min.js"></script>
     <!-- Bootstrap js -->
-    <script src="js/bootstrap.min.js"></script>
+    <script src="../../shop-static/js/bootstrap.min.js"></script>
     <!-- Plugins js -->
-    <script src="js/plugins.js"></script>
+    <script src="../../shop-static/js/plugins.js"></script>
     <!-- Classy Nav js -->
-    <script src="js/classy-nav.min.js"></script>
+    <script src="../../shop-static/js/classy-nav.min.js"></script>
     <!-- Active js -->
-    <script src="js/active.js"></script>
+    <script src="../../shop-static/js/active.js"></script>
+
+    <script src="../../shop-static/client_c/product/detail_product.js"></script>
+    
 
 </body>
 

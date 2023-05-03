@@ -24,7 +24,7 @@ $('#headerSearch').keypress(async function () {
             image = '';
         }
         list_product_shop__c += `
-        <a href="" class="row d-flex align-items-center">
+        <a href="${host}shop/product/${res.data.content[i].id}" class="row d-flex align-items-center">
         <div class="col-2 pd_0">
             <img src="${image}" alt="" class="card-img">
         </div>
@@ -91,4 +91,5 @@ async function loadAllProduct() {
     $('.list-product-shop').html(list_product_shop__c);
 	
 }
+
 
