@@ -1,16 +1,12 @@
-
-$(function() {
-    loadAllProduct();
-})
-
-async function loadAllProduct() {
-    let list_product_shop__c = '';
-    let image = '';
+$('#headerSearch').keypress(async function () { 
+    let list_product_shop__c = '',
+    key_word = $('#headerSearch').val(),
+    image = '';
 	let method = 'get',
 
-		url = `${host}api/products/product`,
+		url = `${host}api/products/product2`,
 
-		params = { page: 0 ,size: 1000},
+		params = {keyword: key_word, page: 0 ,size: 1000},
 
 		data = {};
 
@@ -22,38 +18,16 @@ async function loadAllProduct() {
         } else {
             image = '';
         }
-        list_product_shop__c += `<div class="swiper-slide card">
-        <div class="card-content">
-          <div class="image">
+        list_product_shop__c += `
+        <a href="" class="row d-flex align-items-center">
+        <div class="col-2 pd_0">
             <img src="${image}" alt="" class="card-img">
-          </div>
-
-          <div class="media-icons">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-twitter"></i>
-            <i class="fab fa-github"></i>
-          </div>
-
-          <div class="name-profession">
-            <span class="name">${res.data.content[i].name}</span>
-            <span class="profession">${res.data.content[i].category.name}</span>
-          </div>
-
-          <div class="rating">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="far fa-star"></i>
-            <i class="far fa-star"></i>
-          </div>
-
-          <div class="button">
-            <button class="aboutMe">About Me</button>
-            <button class="hireMe">Hire Me</button>
-          </div>
         </div>
-      </div>`
+        <div class="col-10 pd_r_0">
+                <p class="mg_0">${res.data.content[i].name}</p>
+                <p class="mg_0">Danh mục : ${res.data.content[i].category.name}</p>
+        </div>
+        </a>`
     }
-    $('.list-product-shop').html(list_product_shop__c);
-	
-}
+    $('#result-search-header').html(list_product_shop__c);
+})

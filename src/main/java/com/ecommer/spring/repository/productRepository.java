@@ -54,5 +54,8 @@ public interface productRepository  extends JpaRepository<Product, Long>{
 	 * @return
 	 */
 	Product findByName(String name);
+
+	@Query("SELECT p FROM Product p WHERE id = :id")
+	Product findByProduct(long id);
 	
 }

@@ -14,5 +14,7 @@ public interface ProductService {
 
 	Product createProduct(ProductRequest products);
 
+	Product findByIdProduct(long id);
+
 }
  
