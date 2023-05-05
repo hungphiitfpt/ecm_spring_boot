@@ -6,6 +6,8 @@ package com.ecommer.spring.controller;
 
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
@@ -30,15 +32,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ecommer.spring.model.Image;
 import com.ecommer.spring.model.Product;
 import com.ecommer.spring.model.ProductRequest;
 import com.ecommer.spring.model.ResponseObject;
+import com.ecommer.spring.repository.imageRepository;
 import com.ecommer.spring.repository.productRepository;
 import com.ecommer.spring.services.ProductService;
 
@@ -48,6 +53,9 @@ public class productRestController {
 	
 	@Autowired
 	productRepository productRepository;
+	
+	@Autowired
+	imageRepository imageRepository;
 	
 	@Autowired
 	ProductService productService;
@@ -67,13 +75,25 @@ public class productRestController {
 		}
 
 	}
-
-	@RequestMapping(value = "add", method = RequestMethod.POST, produces = {MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<Product> createProduct(@RequestBody ProductRequest products) {
-    Product product = productService.createProduct(products);
-    return ResponseEntity.ok().body(product);
-  }
 	
+	@PutMapping("/{id}")
+	ResponseEntity<ResponseObject> updateProduct(@RequestBody Product newProduct, @PathVariable Long id) {
+		Product updatedProduct = productRepository.findById(id).map(product -> {
+			product.setCategoryId(newProduct.getCategoryId());
+			product.setColorId(newProduct.getColorId());
+			product.setDescription(newProduct.getDescription());
+			product.setName(newProduct.getName());
+			product.setPrice(newProduct.getPrice());
+			product.setImages(newProduct.getImages());
+			return productRepository.save(product);
+		}).orElseGet(() -> {
+			newProduct.setId(id);
+			return productRepository.save(newProduct);
+		});
+		return ResponseEntity.status(HttpStatus.OK)
+				.body(new ResponseObject("ok", "Cập nhật sản phẩm thành Công", updatedProduct));
+	}
+
 
 	@RequestMapping(value = "product2", method = RequestMethod.GET)
     public Page<Product> searchProducts(

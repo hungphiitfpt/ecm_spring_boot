@@ -35,7 +35,7 @@ public class imageServiceImpl implements IStorageService{
     private boolean isImageFile(MultipartFile file) {
         //Let install FileNameUtils
         String fileExtension = FilenameUtils.getExtension(file.getOriginalFilename());
-        return Arrays.asList(new String[] {"png","jpg","jpeg", "bmp"})
+        return Arrays.asList(new String[] {"png","jpg","jpeg", "bmp","webp"})
                 .contains(fileExtension.trim().toLowerCase());
     }
     @Override

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,11 +39,19 @@ public class Product {
 	private BigDecimal price;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "category_id", nullable = false)
+	@JoinColumn(name = "category_id", nullable = false,insertable = false, updatable=false)
 	private Category category;
+	
+	@Basic
+	@Column(name = "category_id", nullable = false)
+	private long categoryId;
+	
+	@Basic
+	@Column(name = "color_id", nullable = false)
+	private long colorId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "color_id", nullable = false)
+	@JoinColumn(name = "color_id", nullable = false,insertable = false, updatable=false)
 	private Color color;
 
 	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
@@ -127,22 +136,42 @@ public class Product {
 		this.updatedAt = updatedAt;
 	}
 
-	public Product(Long id, String name, String description, BigDecimal price, Category category, Color color,
-			List<Image> images, Date createdAt, Date updatedAt) {
+	
+
+	public long getCategoryId() {
+		return categoryId;
+	}
+
+	public void setCategoryId(long categoryId) {
+		this.categoryId = categoryId;
+	}
+
+	public Product() {
+		super();
+	}
+
+	public long getColorId() {
+		return colorId;
+	}
+
+	public void setColorId(long colorId) {
+		this.colorId = colorId;
+	}
+
+	public Product(Long id, String name, String description, BigDecimal price, Category category, long categoryId,
+			long colorId, Color color, List<Image> images, Date createdAt, Date updatedAt) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.category = category;
+		this.categoryId = categoryId;
+		this.colorId = colorId;
 		this.color = color;
 		this.images = images;
 		this.createdAt = createdAt;
 		this.updatedAt = updatedAt;
-	}
-
-	public Product() {
-		super();
 	}
 
 

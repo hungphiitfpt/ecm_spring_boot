@@ -6,12 +6,16 @@ $(function() {
 })
 
 async function ecm_create_product() {
-	let method = 'post',
+  let id__c = $('.name_product__c').data('id');
+  if(id__c == '') {
+    id__c = '-0';
+  }
+	let method = 'put',
 
-		url = `${host}api/products/add`,
+		url = `${host}api/products/${id__c}`,
 
 		data = {
-            name : $('.name_product__c').val(),
+            name : $('.name_product__c').val().trim(),
             categoryId : Math.round(parseFloat($('.id_category_select__c option:selected').val())), 
             description : $('.content_description__c').val(),
             colorId: Math.round(parseFloat($('.id_color_select__c option:selected').val())),
@@ -21,9 +25,14 @@ async function ecm_create_product() {
     params = {};
 
 	  let res = await axiosTemplate(method, url, params, data);
-    let id_just_create = res.data.id;
+    let id_just_create = res.data.data.id;
     addListImageForProduct(id_just_create);
     loadAllProduct();
+    if(res.status = 200) {
+      toastMessage("Thành công",`${res.data.message}`,"success",5000)
+    } else if(res.status != 200){
+      toastMessage("Xảy ra lỗi","Cảnh báo cho bạn","error",5000)
+    }
 }
 
 async function addListImageForProduct(id) {
@@ -39,7 +48,7 @@ async function addListImageForProduct(id) {
     },
 
 		data = {};
-
+  
 	let res = await axiosTemplate(method, url, params, data);
 }
 
@@ -91,7 +100,9 @@ async function loadAllProduct() {
 
     var res = await axiosTemplate(method, url, params, data,'#table-list-product-manager');
     
-    drawTableProductManager(res, $('#table-list-product-manager'))
+    drawTableProductManager(res, $('#table-list-product-manager'));
+
+  
 	
 }
 
@@ -164,7 +175,7 @@ async function drawTableProductManager(res) {
             <span class="text-muted sr-only">Action</span>
           </button>
           <div class="dropdown-menu dropdown-menu-right">
-            <a class="dropdown-item" href="#">Edit</a>
+            <a class="dropdown-item" href="#" onclick="openModalEditProduct(${res.data.content[i].id})">Edit</a>
             <a class="dropdown-item" href="#">Remove</a>
             <a class="dropdown-item" href="#">Assign</a>
           </div>
@@ -234,4 +245,39 @@ async function drawTableProductManager(res) {
   }else {
     $(`.page-item .page-link${res.data.number}`).addClass('li-disable');
   }
+}
+
+async function openModalEditProduct(id__v){
+  $('#varyModal').modal('show'); 
+  let list_image__c = '';
+  let method = 'get',
+
+  url = `${host}api/products/detail/${id__v}`,
+
+  params = {},
+
+  data = {};
+
+  var res = await axiosTemplate(method, url, params, data,null);
+
+  $('.name_product__c').val(res.data.data.name);
+  $('.name_product__c').attr('data-id', `${res.data.data.id}`);
+  $(".id_category_select__c").val(res.data.data.category.id).trigger('change');
+  $(".id_color_select__c").val(res.data.data.color.id).trigger('change');
+  $('.total_price__c').val(res.data.data.price);
+  $('.content_description__c').val(res.data.data.description);
+  if(res.data.data.images != []){
+    for (let i = 0; i < res.data.data.images.length; i++) {
+      list_image__c += `
+      <div class="uploaded-img"> 
+        <img src="${host}api/v1/FileUpload/files/${res.data.data.images[i].url}" style="
+        max-width: 100px;
+        max-height: 100px;">
+          <button type="button" class="remove-btn"> 
+            <i class="fas fa-times"></i>
+          </button>
+      </div>`
+    }
+  }
+  $('.upload-img').html(list_image__c);
 }

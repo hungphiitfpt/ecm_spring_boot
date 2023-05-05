@@ -104,4 +104,17 @@ public class FileUploadController {
         imageRepository.saveAll(images);
         return ResponseEntity.ok("Added " + urls.size() + " images for product " + productId);
     }
+    
+    @PostMapping("/update")
+    public ResponseEntity<String> updateImages(@RequestParam Product productId, @RequestParam List<String> urls) {
+        List<Image> images = new ArrayList<>();
+        for (String url : urls) {
+        	Image image = new Image();
+            image.setProduct(productId);
+            image.setUrl(url);
+            images.add(image);
+        }
+        imageRepository.saveAll(images);
+        return ResponseEntity.ok("Added " + urls.size() + " images for product " + productId);
+    }
 }

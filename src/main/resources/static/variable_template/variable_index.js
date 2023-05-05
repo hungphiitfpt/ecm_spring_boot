@@ -1,6 +1,8 @@
 var host = `https://ecm-springboot-phinph.cleverapps.io/`;
 var api_images = `https://ecm-springboot-phinph.cleverapps.io/api/v1/FileUpload/files/`;
 
+let listIg = localStorage.setItem('images','');
+
 // Toast function
 function toast({ title = "", message = "", type = "info", duration = 3000 }) {
 	const main = document.getElementById("toast");

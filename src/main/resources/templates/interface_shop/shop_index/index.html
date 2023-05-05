@@ -313,6 +313,13 @@
             // Khi người dùng rời khỏi phần tử searchResults, ẩn phần tử
             searchResults.classList.add('d-none');
           });
+        document.addEventListener('click', function(event) {
+            // Kiểm tra xem phần tử được nhấp chuột có phải là phần tử searchResults không
+            if (!event.target.closest('#result-search-header') && !event.target.closest('.search-input')) {
+              // Nếu người dùng nhấp chuột ra khỏi phạm vi của phần tử searchResults hoặc ô input, ẩn phần tử searchResults
+              searchResults.classList.add('d-none');
+            }
+          });
     </script>    
 </body>
 
